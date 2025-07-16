@@ -51,10 +51,32 @@
                 <div class="col-md-12">
 <asp:GridView 
     ID="GridView1" 
-    runat="server" 
+    runat="server"
+    EmptyDataText="No Record To Display !"
     CssClass="table table-hover table-bordered"
-    AutoGenerateColumns="True"
-    Width="100%" />
+    AutoGenerateColumns="False"
+    Width="100%" >
+    <Columns>
+        <asp:BoundField DataField="Sr.NO" HeaderText="Sr.No">
+        <ItemStyle HorizontalAlign="Center" />
+        </asp:BoundField>
+        <asp:BoundField DataField="ClassName" HeaderText="Class" ReadOnly="True">
+        <ItemStyle BorderStyle="None" HorizontalAlign="Center" />
+        </asp:BoundField>
+        <asp:TemplateField HeaderText="Fees(Annual)">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("FeesAmount") %>' CssClass="form-control"></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label1" runat="server" Text='<%# Eval("FeesAmount") %>'></asp:Label>
+            </ItemTemplate>
+            <ItemStyle HorizontalAlign="Center" />
+        </asp:TemplateField>
+<asp:CommandField HeaderText="Operation" ShowEditButton="True" ShowDeleteButton="True">
+        <ItemStyle HorizontalAlign="Center" />
+        </asp:CommandField>
+    </Columns>
+                    </asp:GridView>
                 </div>
             </div>
         </div>

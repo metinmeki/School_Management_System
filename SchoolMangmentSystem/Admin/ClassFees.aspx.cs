@@ -62,10 +62,13 @@ namespace SchoolMangmentSystem.Admin
 
         private void GetFees()
         {
-            DataTable dt = fn.fetch("SELECT * FROM Fees"); 
+            DataTable dt = fn.fetch(@"SELECT Row_NUMBER() OVER (ORDER BY (SELECT 1)) AS [Sr.NO],
+                              f.FeesId, f.ClassId, c.ClassName, f.FeesAmount
+                              FROM Fees f INNER JOIN Class c ON c.ClassId = f.ClassId");
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }
+
 
         protected void btnAdd_Click1(object sender, EventArgs e)
         {
