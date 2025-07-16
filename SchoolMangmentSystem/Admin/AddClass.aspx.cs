@@ -82,7 +82,7 @@ namespace SchoolMangmentSystem.Admin
             {
                 GridViewRow row = GridView1.Rows[e.RowIndex];
                 int cId =  Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
-                string ClassName = (row.FindControl("txtClassName") as TextBox).Text;
+                string ClassName = (row.FindControl("txtClassEdit") as TextBox).Text;
                 fn.Query("Update Class Set ClassName = '" + ClassName + "' where ClassId = '" + cId + "'");
                 lblMsg.Text = "Class Upload succesffully!";
                 lblMsg.CssClass = "alert alert-success";

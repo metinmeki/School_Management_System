@@ -25,9 +25,10 @@
     <div class="col-md-6">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-border" DataKeyNames="ClassId" AutoGenerateColumns="False"
             EmptyDataText="No Record To Display !" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCancelingEdit="GridView1_RowCancelingEdit" 
-            OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" AllowPagin="True" PageSize="4" Width="1380px" Height="178px">
+            OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" AllowPagin="True" PageSize="4" Width="1047px" Height="178px">
             <Columns>
                 <asp:BoundField DataField="Sr.NO" HeaderText="Sr.NO" ReadOnly="True">
+                <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="Class">
@@ -39,7 +40,7 @@
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
-                <asp:CommandField CausesValidation="False" HeaderText="Operation" />
+<asp:CommandField ShowEditButton="True" ShowCancelButton="True" HeaderText="Operation" />
             </Columns>
             <HeaderStyle BackColor="#5558C9" ForeColor="White"/>
         </asp:GridView>
