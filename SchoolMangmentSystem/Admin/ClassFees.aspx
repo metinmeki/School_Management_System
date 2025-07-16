@@ -6,6 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <style type="text/css">
         .btn-block {}
+        .table-bordered {}
     </style>
 </asp:Content>
 
@@ -16,7 +17,7 @@
                 <asp:Label ID="lblMsg" runat="server"></asp:Label>
             </div>
 
-            <h3 class="text-center">New Class Fees</h3>
+            <h3 class="text-center">New  Fees</h3>
 
             <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
                 <div class="col-md-6"> 
@@ -30,7 +31,7 @@
                         ControlToValidate="ddlClass" 
                         Display="Dynamic" 
                         ForeColor="Red" 
-                        InitialValue="" 
+                        InitialValue="Select Class" 
                         SetFocusOnError="True" />
                 </div>
 
@@ -42,13 +43,18 @@
 
             <div class="row mb-3 mr-lg-5 ml-lg-5">
                 <div class="col-md-3 col-md-offset-2 mb-3">
-                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Add Fees" OnClick="btnAdd_Click" Width="100%" />
+                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Add Class" OnClick="btnAdd_Click" Width="1530px" />
                 </div> 
             </div>
 
             <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
                 <div class="col-md-12">
-                    <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" AutoGenerateColumns="True" />
+<asp:GridView 
+    ID="GridView1" 
+    runat="server" 
+    CssClass="table table-hover table-bordered"
+    AutoGenerateColumns="True"
+    Width="100%" />
                 </div>
             </div>
         </div>

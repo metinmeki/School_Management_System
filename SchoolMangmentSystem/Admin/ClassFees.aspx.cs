@@ -12,7 +12,7 @@ namespace SchoolMangmentSystem.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) // ✅ إصلاح الشرط
+            if (!IsPostBack)
             {
                 GetClass();
                 GetFees();
@@ -26,7 +26,7 @@ namespace SchoolMangmentSystem.Admin
             ddlClass.DataTextField = "ClassName";
             ddlClass.DataValueField = "ClassId";
             ddlClass.DataBind();
-            ddlClass.Items.Insert(0, new ListItem("Select Class", ""));
+            ddlClass.Items.Insert(0,"Select Class");
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -34,13 +34,11 @@ namespace SchoolMangmentSystem.Admin
             try
             {
                 string classVal = ddlClass.SelectedItem.Text;
-                string classId = ddlClass.SelectedItem.Value;
 
-                DataTable dt = fn.fetch("SELECT * FROM Fees WHERE ClassId = '" + classId + "'");
+                DataTable dt = fn.fetch("SELECT * FROM Fees WHERE ClassId = '" + ddlClass.SelectedItem.Value + "'");
                 if (dt.Rows.Count == 0)
                 {
-                    string feeAmount = txtFeeAmount.Text.Trim();
-                    string query = "INSERT INTO Fees (ClassId, FeeAmount) VALUES ('" + classId + "', '" + feeAmount + "')";
+                    string query = "INSERT INTO Fees (ClassId, FeesAmount) VALUES ('" + ddlClass.SelectedItem.Value + "', '" + txtFeeAmount.Text.Trim() + "')";
                     fn.Query(query);
 
                     lblMsg.Text = "Inserted Successfully!";
@@ -64,9 +62,14 @@ namespace SchoolMangmentSystem.Admin
 
         private void GetFees()
         {
-            DataTable dt = fn.fetch("SELECT * FROM Fees"); // ✅ إصلاح Form
+            DataTable dt = fn.fetch("SELECT * FROM Fees"); 
             GridView1.DataSource = dt;
             GridView1.DataBind();
+        }
+
+        protected void btnAdd_Click1(object sender, EventArgs e)
+        {
+
         }
     }
 }
