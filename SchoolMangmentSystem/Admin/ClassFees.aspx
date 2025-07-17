@@ -52,10 +52,12 @@
 <asp:GridView 
     ID="GridView1" 
     runat="server"
-    EmptyDataText="No Record To Display !"
+    EmptyDataText=" NO Record To Display !"
     CssClass="table table-hover table-bordered"
     AutoGenerateColumns="False"
-    Width="100%" >
+    Width="100%" AllowPagin="True" PageSize="4" OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="FeesId"
+    OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing"
+    OnRowUpdated="GridView1_RowUpdated" OnRowUpdating="GridView1_RowUpdating" >
     <Columns>
         <asp:BoundField DataField="Sr.NO" HeaderText="Sr.No">
         <ItemStyle HorizontalAlign="Center" />
@@ -72,10 +74,11 @@
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" />
         </asp:TemplateField>
-<asp:CommandField HeaderText="Operation" ShowEditButton="True" ShowDeleteButton="True">
+<asp:CommandField HeaderText="Operation" CauseValidation="false" ShowEditButton="True" ShowDeleteButton="True">
         <ItemStyle HorizontalAlign="Center" />
         </asp:CommandField>
     </Columns>
+     <HeaderStyle BackColor="#5558C9" ForeColor="White"/>
                     </asp:GridView>
                 </div>
             </div>

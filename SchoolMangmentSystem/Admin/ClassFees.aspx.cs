@@ -74,5 +74,64 @@ namespace SchoolMangmentSystem.Admin
         {
 
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            GetFees();
+        }
+
+        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            GetFees();
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int feeId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                fn.Query("Delete From Fees Where FeesId = '"+feeId+"'");
+                lblMsg.Text = "Fees Deleted Successfully!";
+                lblMsg.CssClass = "alert alert-success";
+                GridView1.EditIndex = -1;
+                GetFees();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert(''" + ex.Message + "'')</script>");
+            }
+        }
+
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            GetFees();
+        }
+
+        protected void GridView1_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+        {
+
+        }
+
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                GridViewRow row = GridView1.Rows[e.RowIndex];
+                int feeId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                string feesAmt = (row.FindControl("TextBox1") as TextBox).Text;
+                fn.Query("Update Fees Set FeesAmount = '"+feesAmt.Trim()+"' where FeesId = '"+feeId+"' ");
+                lblMsg.Text = "Fees Updated Successfully!";
+                lblMsg.CssClass = "alert alert-success";
+                GridView1.EditIndex = -1;
+                GetFees();
+            }
+            catch(Exception ex)
+            {
+                Response.Write("<script>alert(''" + ex.Message + "'')</script>");
+            }
+        }
     }
 }
