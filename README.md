@@ -5,7 +5,7 @@ This is a full-featured School Management System built with ASP.NET and C#. It i
 ##  Project Status
 
  **In Development**  
-This project is expected to be completed within **3 to 6 months**.
+This project is expected to be completed within **3 to 6 months**
 
 ##  Features (Planned)
 
