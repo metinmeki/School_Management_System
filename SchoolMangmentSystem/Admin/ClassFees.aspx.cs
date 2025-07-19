@@ -120,10 +120,11 @@ namespace SchoolMangmentSystem.Admin
             try
             {
                 GridViewRow row = GridView1.Rows[e.RowIndex];
-                int feeId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
-                string feesAmt = (row.FindControl("TextBox1") as TextBox).Text;
-                fn.Query("Update Fees Set FeesAmount = '"+feesAmt.Trim()+"' where FeesId = '"+feeId+"' ");
-                lblMsg.Text = "Fees Updated Successfully!";
+                int subjID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                string classId = ((DropDownList)GridView1.Rows[e.RowIndex].Cells[2].FindControl("DropwDownList1")).SelectedValue;
+                string subjName = (row.FindControl("TextBox1") as TextBox).Text;
+                fn.Query("Update Subject Set ClassId = '"+classId+"', SubjectName= '"+ subjName+"' where SubjectId = '"+ subjID + "' ");
+                lblMsg.Text = "Subject Updated Successfully!";
                 lblMsg.CssClass = "alert alert-success";
                 GridView1.EditIndex = -1;
                 GetFees();

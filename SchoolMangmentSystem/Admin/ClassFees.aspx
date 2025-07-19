@@ -74,9 +74,10 @@
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" />
         </asp:TemplateField>
-<asp:CommandField HeaderText="Operation" CauseValidation="false" ShowEditButton="True" ShowDeleteButton="True">
-        <ItemStyle HorizontalAlign="Center" />
-        </asp:CommandField>
+<asp:CommandField HeaderText="Operation" CausesValidation="false" ShowEditButton="True">
+    <ItemStyle HorizontalAlign="Center" />
+</asp:CommandField>
+
     </Columns>
      <HeaderStyle BackColor="#5558C9" ForeColor="White"/>
                     </asp:GridView>

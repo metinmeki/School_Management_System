@@ -56,9 +56,18 @@
         <asp:BoundField DataField="Sr.NO" HeaderText="Sr.No">
         <ItemStyle HorizontalAlign="Center" />
         </asp:BoundField>
-        <asp:BoundField DataField="ClassName" HeaderText="Class" ReadOnly="True">
-        <ItemStyle BorderStyle="None" HorizontalAlign="Center" />
-        </asp:BoundField>
+        <asp:TemplateField HeaderText="Class">
+            <EditItemTemplate>
+                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="ClassName" DataValueField="ClassId" SelectedValue='<%# Eval("ClassId") %>'>
+                </asp:DropDownList>
+
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SchoolCS %>" SelectCommand="SELECT * FROM [Class]"></asp:SqlDataSource>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label2" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
+            </ItemTemplate>
+            <ItemStyle HorizontalAlign="Center" />
+        </asp:TemplateField>
         <asp:TemplateField HeaderText="Subejct">
             <EditItemTemplate>
                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("SubjectName") %>' CssClass="form-control"></asp:TextBox>
