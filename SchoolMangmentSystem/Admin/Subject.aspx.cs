@@ -38,11 +38,11 @@ namespace SchoolMangmentSystem.Admin
             {
                 string classVal = ddlClass.SelectedItem.Text;
 
-                DataTable dt = fn.fetch("SELECT * FROM Subject WHERE ClassId = '" + ddlClass.SelectedItem.Value + 
-                                        "', SubjectName='"+txtSubject.Text.Trim()+"'");
+                DataTable dt = fn.fetch("SELECT * FROM Subject WHERE ClassId = '" + ddlClass.SelectedItem.Value + "' AND SubjectName='" + txtSubject.Text.Trim() + "'"
+);
                 if (dt.Rows.Count == 0)
                 {
-                    string query = "INSERT Into SubjectId  VALUES ('" + ddlClass.SelectedItem.Value + "', '" + txtSubject.Text.Trim() + "')";
+                    string query = "INSERT INTO Subject (ClassId, SubjectName) VALUES ('" + ddlClass.SelectedItem.Value + "', '" + txtSubject.Text.Trim() + "')";
                     fn.Query(query);
 
                     lblMsg.Text = "Inserted Successfully!";
@@ -66,9 +66,12 @@ namespace SchoolMangmentSystem.Admin
 
         private void GetSubject()
         {
-            DataTable dt = fn.fetch(@"SELECT Row_NUMBER() OVER (ORDER BY (SELECT 1)) AS [Sr.NO],
-                              s.SubjectId, s.ClassId, c.ClassName,
-                              FROM Subject s INNER JOIN Class c ON c.ClassId = s.ClassId");
+            DataTable dt = fn.fetch(@"SELECT 
+                            ROW_NUMBER() OVER (ORDER BY (SELECT 1)) AS [Sr.NO],
+                            s.SubjectId, s.ClassId, c.ClassName, s.SubjectName
+                          FROM Subject s 
+                          INNER JOIN Class c ON c.ClassId = s.ClassId");
+
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }
