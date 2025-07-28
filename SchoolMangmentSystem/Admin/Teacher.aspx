@@ -2,6 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <style type="text/css">
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
             <div style="background-image:url('../Images/'); width:100%; height:720px; background-repeat:no-repeat; background-size:cover; background-attachment:fixed;">
@@ -19,7 +24,6 @@
                               <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Name Should Be In Characters " foreColor="red" 
                         ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName">
-
                     </asp:RegularExpressionValidator>
                 </div>
 
@@ -30,9 +34,14 @@
             </div>
             <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
     <div class="col-md-6"> 
-        <label for="txtName">Name</label>
-            <asp:ListItem Text="Select Class" Value="" />
-                  <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
+        <label for="txtName">Gender</label>
+        <asp:DropDownList ID="ddlGender" runat="server">
+            <asp:ListItem Value="0">Select Gender</asp:ListItem>
+            <asp:ListItem>Male</asp:ListItem>
+            <asp:ListItem>Female</asp:ListItem>
+            <asp:ListItem></asp:ListItem>
+        </asp:DropDownList>
+        <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Name Should Be In Characters " foreColor="red" 
             ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName">
 
