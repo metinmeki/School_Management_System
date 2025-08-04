@@ -28,10 +28,23 @@
                 </div>
 
                 <div class="col-md-6"> 
-                    <label for="txtDoB">Date Of Birth</label>
-                    <asp:TextBox ID="txtDoB" runat="server" CssClass="form-control" TextMode="Date"  Width="100%" Height="22px" required></asp:TextBox>
+                    <label for="txtDoB">Mobile</label>
+                    <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" TextMode="Number" placeholder="10 Digits Mobile No"
+                        Width="100%" Height="22px" required></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Invalid Mobile No" foreColor="red" 
+    ValidationExpression="^[0-9]{10}" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtMobile">
+</asp:RegularExpressionValidator>
                 </div>
             </div>
+            <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
+    <div class="col-md-6"> 
+        <label for="txtEmail">Email</label>
+            <asp:ListItem Text="Select Class" Value="" />
+                  <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Name Should Be In Characters " foreColor="red" 
+            ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName">
+        </asp:RegularExpressionValidator>
+    </div>
             <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
     <div class="col-md-6"> 
         <label for="txtName">Gender</label>
@@ -41,16 +54,13 @@
             <asp:ListItem>Female</asp:ListItem>
             <asp:ListItem></asp:ListItem>
         </asp:DropDownList>
-        <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Name Should Be In Characters " foreColor="red" 
-            ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName">
-
-        </asp:RegularExpressionValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+         ErrorMessage="Gender is Required" ForeColor="Red" ControlToValidate="ddlGender" Display="Dynamic" SetFocusOnError="true" InitialValue="Select Gender"></asp:RequiredFieldValidator>
     </div>
 
     <div class="col-md-6"> 
-        <label for="txtDoB">Date Of Birth</label>
-        <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" TextMode="Date"  Width="100%" Height="22px" required></asp:TextBox>
+        <label for="txtDoB">Mobile</label>
+        <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" TextMode="Number" placeholder="10 Digits Mobile NO"  Width="100%" Height="22px" required></asp:TextBox>
     </div>
 </div>
             <div class="row mb-3 mr-lg-5 ml-lg-5">
