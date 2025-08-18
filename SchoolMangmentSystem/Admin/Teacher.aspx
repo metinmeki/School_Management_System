@@ -19,57 +19,66 @@
 
             <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
                 <div class="col-md-6"> 
-                    <label for="txtName">Name</label>
-                        <asp:ListItem Text="Select Class" Value="" />
-                              <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Name Should Be In Characters " foreColor="red" 
-                        ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName">
-                    </asp:RegularExpressionValidator>
+    <label for="txtName">Name</label>
+    <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Name Should Be In Characters " foreColor="red" 
+        ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName">
+    </asp:RegularExpressionValidator>
+</div>
+                <div class="col-md-6">
+                    <label for="ddlGender">Gender</label>
+                    <asp:DropDownList ID="ddlGender" runat="server">
+                        <asp:ListItem>Male</asp:ListItem>
+                        <asp:ListItem>Female</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Gender Is Required"
+                        ForeColor="Red" ControlToValidate="ddlGender" Display="Dynamic" SetFocusOnError="true" InitialValue="Select Gender">
+                    </asp:RequiredFieldValidator>
                 </div>
 
-                <div class="col-md-6"> 
-                    <label for="txtDoB">Mobile</label>
-                    <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" TextMode="Number" placeholder="10 Digits Mobile No"
-                        Width="100%" Height="22px" required></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Invalid Mobile No" foreColor="red" 
-    ValidationExpression="^[0-9]{10}" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtMobile">
-</asp:RegularExpressionValidator>
-                </div>
             </div>
-            <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
-    <div class="col-md-6"> 
-        <label for="txtEmail">Email</label>
-            <asp:ListItem Text="Select Class" Value="" />
-                  <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Name Should Be In Characters " foreColor="red" 
-            ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName">
-        </asp:RegularExpressionValidator>
-    </div>
-            <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
-    <div class="col-md-6"> 
-        <label for="txtName">Gender</label>
-        <asp:DropDownList ID="ddlGender" runat="server">
-            <asp:ListItem Value="0">Select Gender</asp:ListItem>
-            <asp:ListItem>Male</asp:ListItem>
-            <asp:ListItem>Female</asp:ListItem>
-            <asp:ListItem></asp:ListItem>
-        </asp:DropDownList>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-         ErrorMessage="Gender is Required" ForeColor="Red" ControlToValidate="ddlGender" Display="Dynamic" SetFocusOnError="true" InitialValue="Select Gender"></asp:RequiredFieldValidator>
-    </div>
-
-    <div class="col-md-6"> 
-        <label for="txtDoB">Mobile</label>
+                <div class="col-md-6"> 
+        <label for="txtMobile">Mobile</label>
         <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" TextMode="Number" placeholder="10 Digits Mobile NO"  Width="100%" Height="22px" required></asp:TextBox>
     </div>
 </div>
             <div class="row mb-3 mr-lg-5 ml-lg-5">
                 <div class="col-md-3 col-md-offset-2 mb-3">
-                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Add Subject" OnClick="btnAdd_Click" Width="1530px" />
+                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Add Teacher"  Width="1530px" OnClick="btnAdd_Click" />
                 </div> 
             </div>
+            <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
+    <div class="col-md-6"> 
+        <label for="txtEmail">Email</label>
+        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Enter Email" TextMode="Email" Width="100%" Height="22px" required></asp:TextBox>            
+    </div>
+                <div class="col-md-6">
+                    <label for="txtDoB">Date Of Birth</label>
+                    <asp:TextBox ID="txtDoB" runat="server" CssClass="form-control" TextMode="date" required>
 
+                    </asp:TextBox>
 
+                </div>
+    <div class="col-md-6"> 
+        <label for="txtPassword">Password</label>
+        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Enter Password" Width="100%" Height="22px" required></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPwd" runat="server" 
+            ErrorMessage="Password is required" ForeColor="Red" 
+            ControlToValidate="txtPassword" Display="Dynamic" SetFocusOnError="true" />
+        <asp:RegularExpressionValidator ID="RegexValidatorPwd" runat="server" 
+            ControlToValidate="txtPassword"
+            ErrorMessage="Password must be at least 6 characters with at least one letter and one number"
+            ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+            Display="Dynamic" ForeColor="Red" />
+    </div>
+</div>
+            <div class="row mb-3 mr-log-5 ml-lg-5 mt-md-5">
+                <div class="col-md-12">
+                    <label for="txtAdress">Address</label>
+                    <asp:TextBox ID="txtAdress" runat="server" CssClass="form-control" placeholder="Enter Address" TextMode="MultiLine" required/>
+                </div>
+
+            </div>
             <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
                 <div class="col-md-12">
 <asp:GridView 
