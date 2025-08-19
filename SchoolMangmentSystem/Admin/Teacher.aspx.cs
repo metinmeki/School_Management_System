@@ -73,5 +73,76 @@ namespace SchoolMangmentSystem.Admin
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
             }
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            GetTeachers();
+        }
+
+        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            GetTeachers();
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int teacherId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                fn.Query("Delete From Teacher Where teacherId = '" + teacherId + "'");
+                lblMsg.Text = "Teacher Deleted Successfully!";
+                lblMsg.CssClass = "alert alert-success";
+                GridView1.EditIndex = -1;
+                GetTeachers();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert(''" + ex.Message + "'')</script>");
+
+            }
+        }
+
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            GetTeachers();
+        }
+
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                GridViewRow row = GridView1.Rows[e.RowIndex];
+                int teacherId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                string Name = (row.FindControl("txtName") as TextBox).Text;
+                string Mobile = (row.FindControl("txtMobile") as TextBox).Text;
+                string Password = (row.FindControl("txtPassword") as TextBox).Text;
+                string address = (row.FindControl("txtAddress") as TextBox).Text;
+                fn.Query("UPDATE Teacher SET Name = '" + Name.Trim() +
+                 "', Mobile = '" + Mobile.Trim() +
+                "', Address = '" + address.Trim() +
+                "', Password = '" + Password.Trim() +
+                 "' WHERE TeacherId = '" + teacherId + "'");
+                lblMsg.Text = "Teacher Updated Successfully!";
+                lblMsg.CssClass = "alert alert-success";
+                GridView1.EditIndex = -1;
+                GetTeachers();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert(''" + ex.Message + "'')</script>");
+            }
+        }
+
+        protected void GridView1_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+        {
+            // Optional: Add logic to handle after a row is updated
+            lblMsg.Text = "Row updated successfully!";
+            lblMsg.CssClass = "alert alert-success";
+            // Optionally, rebind your GridView if needed
+            // GetTeachers();
+        }
     }
 }

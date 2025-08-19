@@ -87,36 +87,67 @@
     EmptyDataText=" NO Record To Display !"
     CssClass="table table-hover table-bordered"
     AutoGenerateColumns="False"
-    Width="100%" AllowPagin="True" PageSize="4" OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="SubjectId"
+    Width="100%" AllowPagin="True" PageSize="4" OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames=""
     OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing"
-    OnRowUpdated="GridView1_RowUpdated" OnRowUpdating="GridView1_RowUpdating" >
+    OnRowUpdated="GridView1_RowUpdated" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting" >
     <Columns>
         <asp:BoundField DataField="Sr.NO" HeaderText="Sr.No">
         <ItemStyle HorizontalAlign="Center" />
         </asp:BoundField>
-        <asp:TemplateField HeaderText="Class">
+        <asp:TemplateField HeaderText="Name">
             <EditItemTemplate>
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="ClassName" DataValueField="ClassId" 
-                    SelectedValue='<%# Eval("ClassId") %>' CssClass="form-control">
-                </asp:DropDownList>
+                <asp:Label ID="txtName" runat="server" Text='<%# Eval("Name") %>'
+                    Width="100px"></asp:Label>
+            </EditItemTemplate>
+            <ItemTemplate>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SchoolCS %>" SelectCommand="SELECT * FROM [Class]"></asp:SqlDataSource>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label2" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
+                <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" />
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="Subejct">
+        <asp:TemplateField HeaderText="Mobile">
             <EditItemTemplate>
-                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("SubjectName") %>' CssClass="form-control"></asp:TextBox>
+
+                <asp:TextBox ID="txtMobile" runat="server" Text='<%# Eval("Mobile") %>' CssClass="form-control"
+                    Width="100px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
-                <asp:Label ID="Label1" runat="server" Text='<%# Eval("SubjectName") %>'></asp:Label>
+                <asp:Label ID="lblMobile" runat="server" Text='<%# Eval("Mobile") %>'></asp:Label>
             </ItemTemplate>
+
             <ItemStyle HorizontalAlign="Center" />
         </asp:TemplateField>
-<asp:CommandField HeaderText="Operation" CausesValidation="false" ShowEditButton="True">
+        <asp:TemplateField HeaderText="Email">
+    <ItemTemplate>
+        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+    </ItemTemplate>
+
+    <ItemStyle HorizontalAlign="Center" />
+</asp:TemplateField>
+        <asp:TemplateField HeaderText="Password">
+    <EditItemTemplate>
+        <asp:TextBox ID="txtPassword" runat="server" Text='<%# Eval("Password") %>' CssClass="form-control"
+            Width="100px"></asp:TextBox>
+    </EditItemTemplate>
+
+    <ItemTemplate>
+        <asp:Label ID="lblPassworde" runat="server" Text='<%# Eval("Password") %>'></asp:Label>
+    </ItemTemplate>
+    <ItemStyle HorizontalAlign="Center" />
+</asp:TemplateField>
+                <asp:TemplateField HeaderText="Password">
+    <EditItemTemplate>
+
+        <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address") %>' CssClass="form-control"
+            Width="100px"></asp:TextBox>
+    </EditItemTemplate>
+    <ItemTemplate>
+        <asp:Label ID="lblAddress" runat="server" Text='<%# Eval("Address") %>'></asp:Label>
+    </ItemTemplate>
+
+    <ItemStyle HorizontalAlign="Center" />
+</asp:TemplateField>
+<asp:CommandField HeaderText="Operation" CausesValidation="false" ShowEditButton="True" ShowDeleteButton="true">
         <ItemStyle HorizontalAlign="Center" />
         </asp:CommandField>
     </Columns>
