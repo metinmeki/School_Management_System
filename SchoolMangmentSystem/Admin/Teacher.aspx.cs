@@ -138,11 +138,7 @@ namespace SchoolMangmentSystem.Admin
 
         protected void GridView1_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
-            // Optional: Add logic to handle after a row is updated
-            lblMsg.Text = "Row updated successfully!";
-            lblMsg.CssClass = "alert alert-success";
-            // Optionally, rebind your GridView if needed
-            // GetTeachers();
+            
         }
     }
 }
