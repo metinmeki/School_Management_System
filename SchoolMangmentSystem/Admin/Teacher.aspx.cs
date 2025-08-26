@@ -34,14 +34,17 @@ namespace SchoolMangmentSystem.Admin
         {
             try
             {
-                if (ddlGender.SelectedValue == "0")
+                // Fix: Gender should not be "0" for valid selection
+                if (ddlGender.SelectedValue != "Select Gender" && !string.IsNullOrWhiteSpace(ddlGender.SelectedValue))
                 {
                     string email = txtEmail.Text.Trim();
                     DataTable dt = fn.fetch("select * from Teacher where Email='" + email + "'");
-                    if (dt.Rows.Count > 0)
+                    if (dt.Rows.Count ==0)
                     {
-                        string query = "Insert into Teacher Values ('" + txtName.Text.Trim() + "','" + txtDoB.Text.Trim() + "','" + txtEmail.Text.Trim() + "','" + ddlGender.SelectedValue +
-                            "','" + txtMobile.Text.Trim() + "','" + txtEmail.Text.Trim() + "','" + txtAdress.Text.Trim() + "','" + txtPassword.Text.Trim() + "')";
+                        // Change your insert query to specify the column names and exclude the identity column (TeacherId)
+                        string query = "INSERT INTO Teacher ([Name], DOB, Email, Gender, Mobile, [Address], [Password]) VALUES ('"
+                            + txtName.Text.Trim() + "','" + txtDoB.Text.Trim() + "','" + txtEmail.Text.Trim() + "','" + ddlGender.SelectedValue
+                            + "','" + txtMobile.Text.Trim() + "','" + txtAdress.Text.Trim() + "','" + txtPassword.Text.Trim() + "')" ;
                         fn.Query(query);
                         lblMsg.Text = "Teacher Added Successfully";
                         lblMsg.CssClass = "alert alert-success";
@@ -56,21 +59,20 @@ namespace SchoolMangmentSystem.Admin
                     }
                     else
                     {
-                        lblMsg.Text = "Entred <b> '"+email+"'</b> already exists !";
+                        lblMsg.Text = "Entered <b> '"+email+"'</b> already exists !";
                         lblMsg.CssClass = "alert alert-danger";
                     }
-
                 }
                 else
                 {
                     lblMsg.Text = "Gender is required !";
                     lblMsg.CssClass = "alert alert-danger";
-
                 }
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+                lblMsg.Text = "Error: " + ex.Message;
+                lblMsg.CssClass = "alert alert-danger";
             }
         }
 

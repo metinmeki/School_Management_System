@@ -20,10 +20,24 @@
             <div class="row mb-3 mr-lg-5 ml-lg-5 mt-3">
                 <div class="col-md-6"> 
     <label for="txtName">Name</label>
-    <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter Name"  Width="100%" Height="22px" required></asp:TextBox>            
-    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Name Should Be In Characters " foreColor="red" 
-        ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName">
-    </asp:RegularExpressionValidator>
+    <asp:TextBox ID="txtName" runat="server" CssClass="form-control" 
+    Width="100%" MaxLength="50"></asp:TextBox>
+
+<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+    ControlToValidate="txtName"
+    ErrorMessage="Name is required"
+    ForeColor="Red" Display="Dynamic"
+    SetFocusOnError="true">
+</asp:RequiredFieldValidator>
+
+<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+    ControlToValidate="txtName"
+    ErrorMessage="Name should contain only letters"
+    ForeColor="Red" Display="Dynamic"
+    SetFocusOnError="true"
+    ValidationExpression="^[A-Za-z\s]+$">
+</asp:RegularExpressionValidator>
+
 </div>
                 <div class="col-md-6">
                     <label for="ddlGender">Gender</label>
