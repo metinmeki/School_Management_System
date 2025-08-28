@@ -50,7 +50,7 @@
 
             <!-- Form Section -->
             <div class="form-section">
-                <h3 class="page-title text-center">Assign Teacher to Subject</h3>
+                <h3>Assign Teacher to Subject</h3>
 
                 <!-- Inputs -->
                 <div class="row">
@@ -115,7 +115,7 @@
             <EditItemTemplate>
                 <asp:DropDownList ID="ddlTeacherGv" runat="server" 
                     DataSourceID="SqlDataSource1" 
-                    DataTextField="ClassName" 
+                    DataTextField="Name" 
                     DataValueField="ClassId" 
                     SelectedValue='<%# Eval("TeacherId") %>' 
                     CssClass="form-control form-control-sm">
@@ -146,15 +146,15 @@
         <asp:TemplateField HeaderText="Teacher">
             <EditItemTemplate>
                 <asp:DropDownList ID="ddlClassGv" runat="server" 
-                    DataSourceID="SqlDataSource1" 
+                    DataSourceID="SqlDataSource2" 
                     DataTextField="ClassName" 
                     DataValueField="ClassId" 
-                    SelectedValue='<%# Eval("ClassId") %>' 
+                    SelectedValue='<%# Eval("TeacherId") %>' 
                     CssClass="form-control form-control-sm">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:SchoolCS %>" 
-                    SelectCommand="SELECT * FROM [Class]">
+                    SelectCommand="SELECT [TeacherId], [Name] FROM [Teacher]">
                 </asp:SqlDataSource>
             </EditItemTemplate>
             <ItemTemplate>

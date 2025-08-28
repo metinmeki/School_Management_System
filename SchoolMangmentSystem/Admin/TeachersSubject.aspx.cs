@@ -18,5 +18,10 @@ namespace SchoolMangmentSystem.Admin
         {
 
         }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
