@@ -116,9 +116,11 @@
                 <asp:DropDownList ID="ddlTeacherGv" runat="server" 
                     DataSourceID="SqlDataSource1" 
                     DataTextField="Name" 
-                    DataValueField="ClassId" 
-                    SelectedValue='<%# Eval("TeacherId") %>' 
+                    DataValueField="TeacherId" 
+                    AutoPostBack="true"
+                    SelectedValue='<%# Eval("ClassId") %>' 
                     CssClass="form-control form-control-sm">
+                    <asp:ListItem>Select Class</asp:ListItem>
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:SchoolCS %>" 
@@ -147,8 +149,8 @@
             <EditItemTemplate>
                 <asp:DropDownList ID="ddlClassGv" runat="server" 
                     DataSourceID="SqlDataSource2" 
-                    DataTextField="ClassName" 
-                    DataValueField="ClassId" 
+                    DataTextField="Name" 
+                    DataValueField="TeacherId" 
                     SelectedValue='<%# Eval("TeacherId") %>' 
                     CssClass="form-control form-control-sm">
                 </asp:DropDownList>
