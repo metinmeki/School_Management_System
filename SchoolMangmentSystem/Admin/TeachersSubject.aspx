@@ -98,11 +98,11 @@
     AllowPaging="True" 
     PageSize="6" 
     OnPageIndexChanging="GridView1_PageIndexChanging" 
-    DataKeyNames="SubjectId"
+    DataKeyNames="Id"
     OnRowCancelingEdit="GridView1_RowCancelingEdit" 
     OnRowEditing="GridView1_RowEditing"
     OnRowUpdated="GridView1_RowUpdated" 
-    OnRowUpdating="GridView1_RowUpdating">
+    OnRowUpdating="GridView1_RowUpdating" OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting">
 
     <Columns>
         <%-- Sr. No column --%>
