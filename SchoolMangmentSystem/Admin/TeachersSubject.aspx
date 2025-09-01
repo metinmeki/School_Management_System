@@ -102,7 +102,7 @@
     OnRowCancelingEdit="GridView1_RowCancelingEdit" 
     OnRowEditing="GridView1_RowEditing"
     OnRowUpdated="GridView1_RowUpdated" 
-    OnRowUpdating="GridView1_RowUpdating" OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting">
+    OnRowUpdating="GridView1_RowUpdating" OnRowCommand="GridView1_RowCommand">
 
     <Columns>
         <%-- Sr. No column --%>
