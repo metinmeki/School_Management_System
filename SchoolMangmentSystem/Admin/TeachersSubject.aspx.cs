@@ -201,6 +201,19 @@ namespace SchoolMangmentSystem.Admin
         // ✅ Deleting (needs implementation if required)
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            try
+            {
+                int teacherSubject = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                fn.Query("Delete From teacherSubject Where Id = '" + teacherSubject + "'");
+                lblMsg.Text = "Teacher Subject Deleted Successfully!";
+                lblMsg.CssClass = "alert alert-success";
+                GridView1.EditIndex = -1;
+                GetTeacherSubject();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert(''" + ex.Message + "'')</script>");
+            }
         }
     }
 }
