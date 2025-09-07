@@ -193,7 +193,7 @@ namespace SchoolMangmentSystem.Admin
             GetTeacherSubject();
         }
 
-        // ✅ RowCommand (optional for custom commands)
+        
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
         }
