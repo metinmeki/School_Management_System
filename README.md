@@ -18,7 +18,7 @@ This project is expected to be completed within **3 to 6 months**
 
 ##  Technologies
 
- ASP.NET
+- ASP.NET
 - C#
 - SQL Server
 - HTML, CSS, JavaScript
